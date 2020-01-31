@@ -1,8 +1,16 @@
 <?php
-if (isset($_GET['username'])){
+if (isset($_GET['login'])){
     session_start();
-    $username = $_GET['username'];
-    if($username === "admin"){
+    $login = $_GET['login'];
+
+    if (isset($_GET['user'])) $user = $_GET['user'];
+    else $user = "";
+
+    if (isset($_GET['password'])) $pass = $_GET['password'];
+    else $pass = "";
+
+
+    if($user === "admin" && $pass === "admin"){
         $_SESSION['type'] = "admin";
         header('Location: http://localhost/MailProject/Admin/pageAdmin.php');
 

@@ -42,12 +42,16 @@ require_once("header.php");
 </form>
 
 </div>
+
+<div id ="container-login">
 <form method ="get" action="http://localhost/MailProject/Admin/Adminlogin.php" id="formlog">
 
-
-<input type="submit" onclick="getdatabddUser()" value="admin" name="username" id="login_user"/>
+<input type="text" name="user" id="user" placeholder="User" required>
+<input type="text" name="password" id="pass" placeholder="Password" required>
+<input type="submit" onclick="getdatabddUser()" value="login" name="login" id="login_user"/>
 
 </form>
+</div>
 <?php
 
 
