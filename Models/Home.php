@@ -4,30 +4,22 @@
 
         //function pour envoyé a la base de donnée
 
-function envoieBdd($to, $email, $message, $zip_name)
+        function envoieBdd($to, $email, $message, $zip_name)
         {
-              //pour le mettre en local
+            //pour le mettre en local
             $host = "localhost";
             $dbname = "mailproject;port=3308; charset=utf8";
             $user = "root";
             $pass = "";
-            
 
-          /*  //pour le mettre en ligne
+
+            /*  //pour le mettre en ligne
 
             $host = "localhost";
             $dbname = "joans_; port=3308; charset=utf8";
             $user = "joans";
             $pass = "knjs9opz0AHmqA==";*/
 
-            //laissez en commentaire pour l'instant///////////////////////////////////////////////////////////////////////////////
-
-            /*$options = [ PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ]; // Options PDO
-            $pdo = new PDO('mysql:host='.$host.'; dbname='.$dbname, $user, $pass, $options); // Connexion à la bdd en PDO
-
-            /* try { $pdo = new PDO('mysql:host=localhost;dbname=exos; port=3306; charset=utf8', 'root' , ''); }
-             catch (PDOException $exception) { mail('rap2fr@hotmail.fr', 'PDOException', $exception->getMessage()); exit('Erreur de connexion à la base de données'); }*/
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
             try {
@@ -45,10 +37,10 @@ function envoieBdd($to, $email, $message, $zip_name)
                         ':message' => $message,
                         ':file_zip' => $zip_name,
                     ));
-                   // echo "<br>Entrée ajoutée dans la table";
+                    // echo "<br>Entrée ajoutée dans la table";
                     "<div id=\"envoyer\">Envoyé</div>";
                 } else {
-                   // echo "--- pas de fichier envoyé ---";
+                    // echo "--- pas de fichier envoyé ---";
                 }
             } catch (PDOException $e) {
                 echo "Erreur : " . $e->getMessage();
@@ -56,33 +48,34 @@ function envoieBdd($to, $email, $message, $zip_name)
         }
 
 
-        
-function getdatabddUser(){
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "mailproject";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    
-    $sql = "SELECT id, username, mdp, type_user FROM Utilisateurs";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"]. " - username: " . $row["username"]. " " . $row["mdp"]." ". $row["type_user"]."<br>";
+        function getdatabddUser()
+        {
+
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "mailproject";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT id, username, mdp, type_user FROM Utilisateurs";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "id: " . $row["id"] . " - username: " . $row["username"] . " " . $row["mdp"] . " " . $row["type_user"] . "<br>";
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
         }
-    } else {
-        echo "0 results";
-    }
-    $conn->close();
-}
 
         ?>
