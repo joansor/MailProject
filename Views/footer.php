@@ -1,5 +1,3 @@
-
-
 <footer id="footer" class="">
     <h1>Team: Joan, Ilias, Maëra, Messaouda</h1>
     <p id="copyright" class="">

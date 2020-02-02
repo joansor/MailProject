@@ -49,7 +49,7 @@
 
 
 
-        function getdatabddUser()
+   /*     function getdatabddUser()
         {
 
             $servername = "localhost";
@@ -77,5 +77,5 @@
             }
             $conn->close();
         }
-
+*/
         ?>

@@ -66,11 +66,14 @@ if (isset($_POST["upload_file"]))
 {
     $to      = $_POST['email_recept'];
     $subject = $_POST['subject'];
-   /* $message = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne**/
+   
+   /* $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne**/
 
-    $message = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en local
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   // $message .= "<a href=https://joans.promo-36.codeur.online/MailProject/$zip_name>Lien</a>"; */
+  /* .$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".*/  // en local
+
+   // $buttonUpload .= "<a href=https://joans.promo-36.codeur.online/MailProject/$zip_name>Lien</a>"; */
 
     $header = "From:" .$_POST['email_emet'];
     $header .= "Reply-To: ". $_POST['email_emet'] . "\r\n";
@@ -104,6 +107,11 @@ if (isset($_POST["upload_file"]))
   '.$message.'
   </td>
  </tr>
+ <tr>
+  <td style="display: block; width: 250px; height: 60px; text-align: center">
+  '.$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
+  </td>
+ </tr>
 </tbody></table>
     </html>'; 
    // $message .= "". $_POST['message'].'<br><br>';
@@ -119,7 +127,7 @@ if (isset($_POST["upload_file"]))
     if (!$to || !$header || !$message || !$subject) {
         echo "Rempli le formulaire!!!!!";
     } else {
-        $result = mail($to, $subject, $htmlContent, $header);
+        $result = mail($to, $subject, $htmlContent, $header, $buttonUpload);
 
         envoieBdd($to, $email, $message, $zip_name);
         
