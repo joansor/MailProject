@@ -7,18 +7,18 @@
         function envoieBdd($to, $email, $message, $zip_name)
         {
             //pour le mettre en local
+            // $host = "localhost";
+            // $dbname = "mailproject;port=3308; charset=utf8";
+            // $user = "root";
+            // $pass = "";
+
+
+              //pour le mettre en ligne
+
             $host = "localhost";
-            $dbname = "mailproject;port=3308; charset=utf8";
-            $user = "root";
-            $pass = "";
-
-
-            /*  //pour le mettre en ligne
-
-            $host = "localhost";
-            $dbname = "joans_; port=3308; charset=utf8";
+            $dbname = "joans_mailproject; charset=utf8";
             $user = "joans";
-            $pass = "knjs9opz0AHmqA==";*/
+            $pass = "knjs9opz0AHmqA==";
 
 
 
