@@ -29,7 +29,7 @@
                 //prepare la requete
                 if ($to && $email && $message && $zip_name) {
                     $sth = $dbco->prepare("INSERT INTO user_contact SET email_emet = :email_emet, email_recept = :email_recept, message = :message, file_zip = :file_zip");
-                    $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message, file_zip) VALUES (:email_emet, :email_recept, :message, :file_zip)");
+                    // $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message, file_zip) VALUES (:email_emet, :email_recept, :message, :file_zip)");
                     // execute la requete
                     $sth->execute(array(
                         ':email_emet' => $to,
