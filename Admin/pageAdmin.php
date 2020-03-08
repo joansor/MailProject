@@ -1,4 +1,17 @@
-<?php require_once('../Admin/deletebdd.php'); ?>
+<?php require_once('../Admin/deletebdd.php');?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php echo $title?></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
 <h1>Dashboard</h1>
 
 <?php
@@ -26,18 +39,17 @@ if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
         echo "<table>";
-        echo "<tr>id : " . $row["id"]."</td>";
+        echo "<tr>id : " . $row["id"]."</td></p>";
         echo "<tr> - username: " . $row["username"]."</td>";
         echo "<tr> - le mdp " . $row["mdp"]."</td>";
         echo "<tr> - type utilisateur " . $row["type_user"]."</td>";
         echo "<tr>- email envoyé par : " . $row["email_emet"]."</td>";
         echo "<tr> - email de réception: " . $row["email_recept"]."</td>";
         echo "<tr> - message : " . $row["message"]."</td>";
-        echo "<tr> - fichier_upload " . $row["file_zip"] ."</td><br>";
-        echo "<td><input type=\"button\" onclick=\"supprimer();\" name=\"supprimer\" class=\"suppression\" value=\"supprimer\"/></td></tr>";
+        echo "<tr> - fichier_upload " . $row["file_zip"] ."</td>";
+        echo "<td><input type=\"submit\" onclick=\"delete($id)\" name=\"supprimer\" class=\"suppression btn btn-danger\" value=\"supprimer\"/></td></tr>";
         echo"</table>";
-        
-        //. " - username: " . $row["username"] . " - le mdp " . $row["mdp"] . " - type utilisateur " . $row["type_user"] . " - email envoyé par : " . $row["email_emet"] . " - email de réception: " . $row["email_recept"] . " - message : " . $row["message"] . " - fichier_upload " . $row["file_zip"] . "<br>";
+        echo"<br>";
         
     }
 } else {
@@ -46,4 +58,3 @@ if ($result->num_rows > 0) {
 $conn->close();
 require_once('../Views/footer.php');
 
-?>

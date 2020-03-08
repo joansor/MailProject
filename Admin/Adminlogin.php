@@ -1,7 +1,5 @@
 <?php
 
-
-
 if (isset($_GET['login'])) {
     session_start();
     $login = $_GET['login'];
