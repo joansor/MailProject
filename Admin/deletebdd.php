@@ -8,9 +8,13 @@
  else $id = "";
 
 
+echo "-----$id------------------";
+
 function delete($id){
 
 global $supprimer, $id;
+
+
 
     if($supprimer){
     
@@ -30,8 +34,9 @@ global $supprimer, $id;
                     }
 
                     //requete supprimer 
-                    $sql = $database->prepare("DELETE FROM utilisateurs, user_contact WHERE id= ".$id."");  
-                    $sql->execute(array(':id' => $id));
+                    $sql = $database->prepare("DELETE FROM user_contact WHERE id = ".$_GET['id']." ");  
+                    $sql->execute([$_GET['id'] => $id]);
+                    header('Location: pageAdmin.php');
 
             }catch (PDOException $e) {
                 echo "Erreur : " . $e->getMessage();

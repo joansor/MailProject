@@ -36,8 +36,11 @@ if (isset($_GET['login'])) {
     if (!$database) {
         die('Could not connect to database: ');
     }
-//requete inserer dans la table utilisateur
-    $sql = "INSERT INTO utilisateurs (username,mdp,type_user) VALUES ( '" . $user . "' , '" . $pass . "','" . $_SESSION['type'] . "')";
+//requete recupère dans la table user_contact et tout les infos
+
+    // $sql = "INSERT INTO utilisateurs (username,mdp,type_user) VALUES ( '" . $user . "' , '" . $pass . "','" . $_SESSION['type'] . "')";
+    $sql = "SELECT * FROM user_contact";
+
 // succes or error
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";

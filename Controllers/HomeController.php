@@ -68,11 +68,11 @@ if (isset($_POST["upload_file"]))
     $to      = $_POST['email_recept'];
     $subject = $_POST['subject'];
    
-    $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
+    // $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  /* .$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".*/  // en local
+$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";  // en local
 
    // $buttonUpload .= "<a href=https://joans.promo-36.codeur.online/MailProject/$zip_name>Lien</a>"; */
 
@@ -135,7 +135,6 @@ if (isset($_POST["upload_file"]))
         
     }
 }
-
 
 
 require_once('Views/HomeView.php');
