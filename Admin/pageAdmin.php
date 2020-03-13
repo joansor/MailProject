@@ -40,7 +40,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 
         $id = $row["id"];
+
         echo "<table>";
+        
         // echo "<tr> - username: " . $row["username"]."</td>";
         // echo "<tr> - le mdp " . $row["mdp"]."</td>";
         // echo "<tr> - type utilisateur " . $row["type_user"]."</td>";
@@ -49,17 +51,18 @@ if ($result->num_rows > 0) {
         echo "<tr> - message : " . $row["message"]."</td>";
         echo "<tr> - fichier_upload " . $row["file_zip"] ."</td>";
 
-        echo"<form action =\"traitement.php\" method=\"get\">";
+        echo"<form action =\"traitement.php?supprimer=supprimer:\"$id\" method=\"get\">";
+        
 
+       // \"traitement.php?supprimer=supprimer:\"$id
+        // traitement.php?supprimer=$id
         // http://localhost/MailProject/Admin/pageAdmin.php?supprimer=supprimer:" .$row["id"].
-        // echo "<tr><p name='id'>id : " . $row["id"]."</p></td>";
+        echo "<tr><p name=\".$id.\">id : ".$id."</p></td>";
 
-
-        echo "<td><input type=\"submit\" onclick=\"delete($id)\" name=\"supprimer\" class=\"suppression btn btn-danger\" value=\"supprimer\"/>$id</td></tr>";
+        echo "<td><input type=\"submit\" name=\"supprimer\" class=\"suppression btn btn-danger\" value=\"supprimer\" onclick=\"return confirm('Are you sure?')\"/></td></tr>";
         echo"</form>";
         echo"</table>";
         echo"<br>";
-        echo"delete()";
     }
 } else {
     echo "0 results";
