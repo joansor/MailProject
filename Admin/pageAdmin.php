@@ -1,4 +1,8 @@
-<?php require_once('../Admin/deletebdd.php');?>
+<?php
+    require_once('../Admin/deletebdd.php');
+    session_start();
+   
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,17 +13,21 @@
     <title><?php echo $title?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <title>toto</title>
 </head>
 <body>
-
+<!--page Dashboard-->
 <h1>Dashboard</h1>
 
 <?php
+
+
+//variable pour la connection a la bdd
 $servername = "localhost:3308";
 $username = "root";
 $password = "";
 
-// Create connection
+// Cree une connection
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
@@ -27,16 +35,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//connection a la table mailproject
 $database = mysqli_select_db($conn, 'mailproject');
 if (!$database) {
     die('Could not connect to database: ');
 }
-//requete recupere les champs des deux tables en gardant seulement le id de la table utilisateur
+
+//requete recupere les champs table user_contact
 $sql = "SELECT * FROM user_contact";
 $result = $conn->query($sql);
 
+//pour chaque donnée, on les récupères et on les alignes 
 if ($result->num_rows > 0) {
-    // output data of each row
+    //tant qu'il y a des données récupère et affiche
     while ($row = $result->fetch_assoc()) {
 
         $id = $row["id"];
@@ -53,22 +64,21 @@ if ($result->num_rows > 0) {
 
         echo"<form action =\"traitement.php\" method=\"post\">";
         
-
-       // \"traitement.php?supprimer=supprimer:\"$id
-        // traitement.php?supprimer=$id
-        // http://localhost/MailProject/Admin/pageAdmin.php?supprimer=supprimer:" .$row["id"].
-
         echo "<tr><input type=\"hidden\" name=\"id\" value=".$row['id']."></td>";
         
         echo "<td><input type=\"submit\" name=\"supprimer\" class=\"suppression btn btn-danger\" value=\"supprimer\" onclick=\"return confirm('Are you sure?')\"/></td></tr>";
+
         echo"</form>";
         echo"</table>";
         echo"<br>";
     }
 } else {
+    //si pas de résultat affiche 0 results
     echo "0 results";
 }
+//ferme la connection
 $conn->close();
+//affiche le footer
 require_once('../Views/footer.php');
 
 

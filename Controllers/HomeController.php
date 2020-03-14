@@ -1,14 +1,12 @@
 <?php
 
-
+// recupère le model Home.php
 require_once('Models/Home.php');
 
-
-//ici de traitements
+// affiche ce title
 $title = "Home";
 
-//traitements.
-
+//////////////////////////////////
 if (isset($_POST['message'])) $message = $_POST['message'];
 else $message = "";
 
@@ -20,6 +18,7 @@ else $email = "";
 
 if (isset($_POST['subject'])) $subject = $_POST['subject'];
 else $subject = "";
+///////////////////////////////////
 
 
 //function pour fichier zip
@@ -60,8 +59,6 @@ if ($_FILES && $_FILES['file_zip']) {
 
 
 
-
-
 //envoie de mail en local sur la boite mailtrap.io ou en ligne
 if (isset($_POST["submit"])) 
 {
@@ -72,10 +69,7 @@ if (isset($_POST["submit"]))
     $to      = $_POST['email_recept'];
     $subject = $_POST['subject'];
  
-
-
-
-   // $buttonUpload .= "<a href=https://joans.promo-36.codeur.online/MailProject/$zip_name>Lien</a>"; */
+// Construction du mail receptionné
 
     $header = "From:" .$_POST['email_emet'];
     $header .= "Reply-To: ". $_POST['email_emet'] . "\r\n";
@@ -112,22 +106,21 @@ if (isset($_POST["submit"]))
 //  </tr>
 
 
-
+// si y a un ZIP affiche un bouton dans le mail 
 
  if($zip_name){
 
 // $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // $buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";  // en local
 
 
 
-
  $htmlContent .='<tr>
   <td style="display: block; width: 250px; height: 60px; text-align: center">
-  '.$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
+  '.$buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=\"https://joans.promo-36.codeur.online/joans_mailproject/user_contact/$zip_name\"style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
   </td>
  </tr>
 </tbody></table>
@@ -140,6 +133,7 @@ if (isset($_POST["submit"]))
  }
    // $message .= "". $_POST['message'].'<br><br>';
    
+// encodage pour la affichage du contenu du mail
 
     $to = @html_entity_decode($to);
     $subject = @html_entity_decode($subject);
@@ -147,12 +141,15 @@ if (isset($_POST["submit"]))
     $zip_name = @html_entity_decode($zip_name);
     $message = @html_entity_decode($message);
 
-//si le message est envoié ou pas les message suivant "s'affiche*/
+//si le message est envoié ou pas les message suivant "s'affiche
+
     if (!$to || !$header || !$message || !$subject) {
         echo "Rempli le formulaire!!!!!";
     } else {
+        //envoie du mail
         $result = mail($to, $subject, $htmlContent, $header, $buttonUpload);
 
+        //function du model Home.php pour inserer dans la bdd
         envoieBdd($to, $email, $message, $zip_name);
         
         

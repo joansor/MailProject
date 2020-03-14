@@ -9,11 +9,8 @@
  if (isset($_POST['id'])) $id = $_POST['id'];
  else $id = "";
 
-//  global $id;
 
-echo "-----$id--------------!!----";
 
-    
     
     $host = "localhost:3308";
     $dbname = "mailproject; port=3808 ;charset=utf8";
