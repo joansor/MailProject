@@ -22,10 +22,15 @@
 <?php
 
 
-//variable pour la connection a la bdd
-$servername = "localhost:3308";
-$username = "root";
-$password = "";
+//variable pour la connection a la bdd LOCAL
+// $servername = "localhost:3308";
+// $username = "root";
+// $password = "";
+
+$servername = "localhost";
+$username = "joans";
+$password = "knjs9opz0AHmqA==";
+
 
 // Cree une connection
 $conn = new mysqli($servername, $username, $password);
@@ -36,7 +41,7 @@ if ($conn->connect_error) {
 }
 
 //connection a la table mailproject
-$database = mysqli_select_db($conn, 'mailproject');
+$database = mysqli_select_db($conn, 'joans_mailproject');
 if (!$database) {
     die('Could not connect to database: ');
 }

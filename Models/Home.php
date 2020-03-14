@@ -8,7 +8,7 @@
         {
 
 
-           // pour le mettre en local
+          // pour le mettre en local
             $host = "localhost";
             $dbname = "mailproject;port=3308; charset=utf8";
             $user = "root";
@@ -22,6 +22,7 @@
             // $user = "joans";
             // $pass = "knjs9opz0AHmqA==";
 
+            
 
                     //connection à la bdd
             try {
