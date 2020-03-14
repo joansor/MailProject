@@ -41,7 +41,7 @@ if ($conn->connect_error) {
 }
 
 //connection a la table mailproject
-$database = mysqli_select_db($conn, 'mailproject');
+$database = mysqli_select_db($conn, 'joans_mailproject');
 if (!$database) {
     die('Could not connect to database: ');
 }
@@ -67,7 +67,7 @@ if ($result->num_rows > 0) {
         echo "<tr> - message : " . $row["message"]."</td>";
         echo "<tr> - fichier_upload " . $row["file_zip"] ."</td>";
 
-        echo"<form action =\"traitement.php\" method=\"post\">";
+        echo"<form action =\"https://joans.promo-36.codeur.online/MailProject/traitement.php\" method=\"post\">";
         
         echo "<tr><input type=\"hidden\" name=\"id\" value=".$row['id']."></td>";
         

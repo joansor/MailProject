@@ -18,17 +18,17 @@ if (isset($_GET['login'])) {
     if ($user === "admin" && $pass === "admin") { //si admin
 
         $_SESSION['type'] = "admin";
-        header('Location: http://localhost/MailProject/Admin/pageAdmin.php'); //redirection sur pageAdmin.php
+        header('Location: https://joans.promo-36.codeur.online/MailProject/Admin/pageAdmin.php'); //redirection sur pageAdmin.php
 
     }else if ($user !== "admin") { // si utilisateur 
 
         $_SESSION['type'] = "user";
-        header('Location: http://localhost/MailProject/'); //redirection a la page d'accueuil 
+        header('Location: https://joans.promo-36.codeur.online/MailProject'); //redirection a la page d'accueuil 
     }
 
-    $servername = "localhost:3308";
-    $username = "root";
-    $password = "";
+    $servername = "localhost";
+    $username = "joans";
+    $password = "knjs9opz0AHmqA==";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password);
@@ -38,7 +38,7 @@ if (isset($_GET['login'])) {
         die("Connection failed: " . $conn->connect_error);
     }
     //connection bdd 'mailproject'
-    $database = mysqli_select_db($conn, 'mailproject');
+    $database = mysqli_select_db($conn, 'joans_mailproject');
     if (!$database) {
         die('Could not connect to database: ');
     }

@@ -32,9 +32,18 @@
 
 
                 //prepare la requete pour inserer dans la bdd
-                if ($to && $email && $message) {
+                if ($to && $email && $message || !$zip_name) {
                     // $sth = $dbco->prepare("INSERT INTO user_contact SET email_emet = :email_emet, email_recept = :email_recept, message = :message");
                     $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message) VALUES (:email_emet, :email_recept, :message)");
+
+                    if(!$zip_name){ //si il a un fichier file.zip insert le aussi dans la bdd
+                        $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message, file_zip) VALUES (:email_emet, :email_recept, :message, :file_zip)");
+                        $sth->execute([
+                            ':email_emet' => $to,
+                            ':email_recept' => $email,
+                            ':message' => $message,
+                            ':file_zip' => $zip_name,
+                        ]);
                     // execute la requete
                     $sth->execute(array(
                         ':email_emet' => $to,
@@ -45,16 +54,12 @@
                     // echo "<br>Entrée ajoutée dans la table";
                     "<div id=\"envoyer\">Envoyé</div>";
                 }
-                if($zip_name){ //si il a un fichier file.zip insert le aussi dans la bdd
-                    $sth = $dbco->prepare("INSERT INTO user_contact (file_zip) VALUES (:file_zip)");
-                    $sth->execute([
-                        ':file_zip' => $zip_name,
-                    ]);
+                
 
                 }else {
                     
                     //sinon arrete ne fait rien et redirection
-                    header('Location: HomeView.php');
+                    header('Location: https://joans.promo-36.codeur.online/MailProject/');
                 }
             } catch (PDOException $e) { //si pb dans connection
                 echo "Erreur : " . $e->getMessage();

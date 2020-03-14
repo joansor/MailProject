@@ -120,7 +120,7 @@ if (isset($_POST["submit"]))
 
  $htmlContent .='<tr>
   <td style="display: block; width: 250px; height: 60px; text-align: center">
-  '.$buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=\"https://joans.promo-36.codeur.online/joans_mailproject/user_contact/$zip_name\"style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
+  '.$buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href= https://joans.promo-36.codeur.online/joans_mailproject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
   </td>
  </tr>
 </tbody></table>
@@ -152,7 +152,7 @@ if (isset($_POST["submit"]))
         //function du model Home.php pour inserer dans la bdd
         envoieBdd($to, $email, $message, $zip_name);
         
-        header('Location: HomeView.php');
+        header('Location: https://joans.promo-36.codeur.online/MailProject');
     }
 }
 
