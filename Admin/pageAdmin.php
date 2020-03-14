@@ -41,7 +41,7 @@ if ($conn->connect_error) {
 }
 
 //connection a la table mailproject
-$database = mysqli_select_db($conn, 'joans_mailproject');
+$database = mysqli_select_db($conn, 'mailproject');
 if (!$database) {
     die('Could not connect to database: ');
 }

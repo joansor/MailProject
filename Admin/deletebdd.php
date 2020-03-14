@@ -18,7 +18,7 @@
     // $pass = "";
     
     $host = "localhost";
-    $dbname = "joans_mailproject; port=3808; charset=utf8";
+    $dbname = "joans_; port=3808; charset=utf8";
     $user = "joans"; 
     $pass = "knjs9opz0AHmqA==";
  

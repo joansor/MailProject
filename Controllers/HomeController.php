@@ -152,7 +152,7 @@ if (isset($_POST["submit"]))
         //function du model Home.php pour inserer dans la bdd
         envoieBdd($to, $email, $message, $zip_name);
         
-        
+        header('Location: HomeView.php');
     }
 }
 
