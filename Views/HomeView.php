@@ -35,7 +35,7 @@ require_once("header.php");
 
                 <div class="button-form">
                         
-                <input class="send" type="submit" name="upload_file" value="Send">
+                <input class="send" type="submit" name="submit" value="Send">
                 </div>
 
        

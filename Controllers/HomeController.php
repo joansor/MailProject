@@ -63,16 +63,17 @@ if ($_FILES && $_FILES['file_zip']) {
 
 
 //envoie de mail en local sur la boite mailtrap.io ou en ligne
-if (isset($_POST["upload_file"])) 
+if (isset($_POST["submit"])) 
 {
+
+
+    global $zip_name, $buttonUpload;
+
     $to      = $_POST['email_recept'];
     $subject = $_POST['subject'];
-   
-    // $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
+ 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";  // en local
 
    // $buttonUpload .= "<a href=https://joans.promo-36.codeur.online/MailProject/$zip_name>Lien</a>"; */
 
@@ -99,22 +100,44 @@ $buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100
   </td>
  </tr>
  <tr>
-  <td style="display: block; width: "250px; min-height: 250px"">
-  '. $_POST['message'].'.<br><br><br><br>'.'
-  </td>
- </tr>
- <tr>
   <td style="display: block; width: 250px; height: 60px; text-align: center">
   '.$message.'
   </td>
- </tr>
- <tr>
+ </tr>';
+
+//  <tr>
+//   <td style="display: block; width: "250px; min-height: 250px"">
+//   '. $_POST['message'].'.<br><br><br><br>'.'
+//   </td>
+//  </tr>
+
+
+
+
+ if($zip_name){
+
+// $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// $buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";  // en local
+
+
+
+
+ $htmlContent .='<tr>
   <td style="display: block; width: 250px; height: 60px; text-align: center">
   '.$buttonUpload = "<button type=\"button\" style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"name =\"buttonUpload\"><a href=http://localhost/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
   </td>
  </tr>
 </tbody></table>
     </html>'; 
+
+ }else{
+
+    echo"";
+
+ }
    // $message .= "". $_POST['message'].'<br><br>';
    
 

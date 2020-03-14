@@ -6,6 +6,10 @@
 
         function envoieBdd($to, $email, $message, $zip_name)
         {
+
+            if (isset( $_FILES['file_zip'])) $zip_name =  $_FILES['file_zip'];
+            else $zip_name = "";
+
            // pour le mettre en local
             $host = "localhost";
             $dbname = "mailproject;port=3308; charset=utf8";
@@ -26,6 +30,9 @@
                 $dbco = new PDO('mysql:host=' . $host . '; dbname=' . $dbname, $user, $pass);
                 $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+
+
+
                 //prepare la requete
                 if ($to && $email && $message && $zip_name) {
                     $sth = $dbco->prepare("INSERT INTO user_contact SET email_emet = :email_emet, email_recept = :email_recept, message = :message, file_zip = :file_zip");
@@ -39,7 +46,7 @@
                     ));
                     // echo "<br>Entrée ajoutée dans la table";
                     "<div id=\"envoyer\">Envoyé</div>";
-                } else {
+                }else {
                     // echo "--- pas de fichier envoyé ---";
                 }
             } catch (PDOException $e) {
