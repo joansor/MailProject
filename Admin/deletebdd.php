@@ -1,15 +1,15 @@
-<?php require_once('../Admin/pageAdmin.php'); ?>
+<?php //require_once('../Admin/pageAdmin.php'); ?>
 
 <?php
 
 
- if (isset($_GET['supprimer'])) $supprimer = $_GET['supprimer'];
+ if (isset($_POST['supprimer'])) $supprimer = $_POST['supprimer'];
  else $supprimer = "";
 
-//  if (isset($_GET['id'])) $id = $_GET['id'];
-//  else $id = "";
+ if (isset($_POST['id'])) $id = $_POST['id'];
+ else $id = "";
 
- global $id;
+//  global $id;
 
 echo "-----$id--------------!!----";
 
@@ -28,8 +28,8 @@ echo "-----$id--------------!!----";
                     //requete supprimer 
                     $sql = $conn->prepare("DELETE FROM user_contact WHERE id = :id");  
                     $sql->execute([':id'=>$id]);
-                  
-                    //header('Location: pageAdmin.php');
+
+                    header('Location: pageAdmin.php');
 
                 } else {
                      echo "";

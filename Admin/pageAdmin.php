@@ -51,14 +51,15 @@ if ($result->num_rows > 0) {
         echo "<tr> - message : " . $row["message"]."</td>";
         echo "<tr> - fichier_upload " . $row["file_zip"] ."</td>";
 
-        echo"<form action =\"traitement.php?supprimer=supprimer:\"$id\" method=\"get\">";
+        echo"<form action =\"traitement.php\" method=\"post\">";
         
 
        // \"traitement.php?supprimer=supprimer:\"$id
         // traitement.php?supprimer=$id
         // http://localhost/MailProject/Admin/pageAdmin.php?supprimer=supprimer:" .$row["id"].
-        echo "<tr><p name=\".$id.\">id : ".$id."</p></td>";
 
+        echo "<tr><input type=\"hidden\" name=\"id\" value=".$row['id']."></td>";
+        
         echo "<td><input type=\"submit\" name=\"supprimer\" class=\"suppression btn btn-danger\" value=\"supprimer\" onclick=\"return confirm('Are you sure?')\"/></td></tr>";
         echo"</form>";
         echo"</table>";
@@ -69,4 +70,5 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 require_once('../Views/footer.php');
+
 
