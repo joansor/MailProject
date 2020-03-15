@@ -1,5 +1,3 @@
-<?php //require_once('../Admin/pageAdmin.php'); ?>
-
 <?php
 
 
@@ -18,7 +16,7 @@
     // $pass = "";
     
     $host = "localhost";
-    $dbname = "joans_; port=3808; charset=utf8";
+    $dbname = "joans_mailproject; port=3808; charset=utf8";
     $user = "joans"; 
     $pass = "knjs9opz0AHmqA==";
  
@@ -34,7 +32,8 @@
                     $sql = $conn->prepare("DELETE FROM user_contact WHERE id = :id");  
                     $sql->execute([':id'=>$id]);
 
-                    header('Location: pageAdmin.php');
+                     header('Location: https://joans.promo-36.codeur.online/MailProject/Admin/pageAdmin.php');
+
 
                 } else {
                      echo "";

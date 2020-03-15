@@ -3,6 +3,8 @@
 // recupère le model Home.php
 require_once('Models/Home.php');
 
+
+
 // affiche ce title
 $title = "Home";
 
@@ -18,6 +20,8 @@ else $email = "";
 
 if (isset($_POST['subject'])) $subject = $_POST['subject'];
 else $subject = "";
+
+
 ///////////////////////////////////
 
 
@@ -107,7 +111,6 @@ if (isset($_POST["submit"]))
 
 
 // si y a un ZIP affiche un bouton dans le mail 
-
  if($zip_name){
 
 // $buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href=https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>";   // en ligne
@@ -120,7 +123,7 @@ if (isset($_POST["submit"]))
 
  $htmlContent .='<tr>
   <td style="display: block; width: 250px; height: 60px; text-align: center">
-  '.$buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href= https://joans.promo-36.codeur.online/joans_mailproject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
+  '.$buttonUpload = "<button  style=\"background: #4CAF50; height:100; border-radius: 5px; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px; text-decoration: none;\"><a href= https://joans.promo-36.codeur.online/MailProject/$zip_name style=\"text-decoration: none; color: white\">Download.$zip_name</a></button>".'
   </td>
  </tr>
 </tbody></table>
@@ -131,7 +134,6 @@ if (isset($_POST["submit"]))
     echo"";
 
  }
-   // $message .= "". $_POST['message'].'<br><br>';
    
 // encodage pour la affichage du contenu du mail
 

@@ -45,7 +45,7 @@ require_once("header.php");
 
 <div id ="container-login" class="container">
 
-                <form method ="get" action="http://localhost/MailProject/Admin/Adminlogin.php" id="formlog" >
+                <form method ="get" action="https://joans.promo-36.codeur.online/MailProject/Admin/pageAdmin.php" id="formlog" >
 
                         <input type="text" name="user" id="user" placeholder="User" required>
                         <input type="text" name="password" id="pass" placeholder="Password" required>

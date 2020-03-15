@@ -29,21 +29,27 @@
                 $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
+                if($to && $email && $message && $zip_name){
 
+                    $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message, file_zip) VALUES (:email_emet, :email_recept, :message, :file_zip)");
+                    $sth->execute([
+                        ':email_emet' => $to,
+                        ':email_recept' => $email,
+                        ':message' => $message,
+                        ':file_zip' => $zip_name,
+
+
+
+                ]);}
 
                 //prepare la requete pour inserer dans la bdd
-                if ($to && $email && $message || !$zip_name) {
+                elseif ($to && $email && $message) {
                     // $sth = $dbco->prepare("INSERT INTO user_contact SET email_emet = :email_emet, email_recept = :email_recept, message = :message");
                     $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message) VALUES (:email_emet, :email_recept, :message)");
 
-                    if(!$zip_name){ //si il a un fichier file.zip insert le aussi dans la bdd
-                        $sth = $dbco->prepare("INSERT INTO user_contact (email_emet,email_recept, message, file_zip) VALUES (:email_emet, :email_recept, :message, :file_zip)");
-                        $sth->execute([
-                            ':email_emet' => $to,
-                            ':email_recept' => $email,
-                            ':message' => $message,
-                            ':file_zip' => $zip_name,
-                        ]);
+                    // if($zip_name){ //si il a un fichier file.zip insert le aussi dans la bdd
+                       
+                        
                     // execute la requete
                     $sth->execute(array(
                         ':email_emet' => $to,
@@ -53,14 +59,15 @@
                     ));
                     // echo "<br>Entrée ajoutée dans la table";
                     "<div id=\"envoyer\">Envoyé</div>";
-                }
+
                 
 
                 }else {
                     
-                    //sinon arrete ne fait rien et redirection
-                    header('Location: https://joans.promo-36.codeur.online/MailProject/');
-                }
+                    echo"echec !";
+                //     //sinon arrete ne fait rien et redirection
+                //     header('Location: https://joans.promo-36.codeur.online/MailProject/');
+                 }
             } catch (PDOException $e) { //si pb dans connection
                 echo "Erreur : " . $e->getMessage();
             }

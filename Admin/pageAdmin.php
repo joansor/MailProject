@@ -1,7 +1,5 @@
 <?php
-    require_once('../Admin/deletebdd.php');
-    session_start();
-   
+    require_once('./deletebdd.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +65,7 @@ if ($result->num_rows > 0) {
         echo "<tr> - message : " . $row["message"]."</td>";
         echo "<tr> - fichier_upload " . $row["file_zip"] ."</td>";
 
-        echo"<form action =\"https://joans.promo-36.codeur.online/MailProject/traitement.php\" method=\"post\">";
+        echo"<form action =\"traitement.php\" method=\"post\">";
         
         echo "<tr><input type=\"hidden\" name=\"id\" value=".$row['id']."></td>";
         
